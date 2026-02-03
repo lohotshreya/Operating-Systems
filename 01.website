@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <img src="https://static.wixstatic.com/media/cc92dc_9bb5e40e00ca4634b0c35cd92643251d~mv2.jpeg/v1/fill/w_286,h_269,al_c,lg_1,q_80,enc_avif,quality_auto/DoT%20Pune%20University.jpeg" alt="Department Logo" style="width: 100px; height:auto; display:block; float:left;">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/Savitribai_Phule_Pune_University_Logo.png/250px-Savitribai_Phule_Pune_University_Logo.png" alt="SPPU Logo" style="width:100px; height:auto; display:block; float:right;">
+    <body style="font-family: Arial; background:#b3e9f3;">
 
+<h1 style="text-align:center;">Department of Technology</h1>
+
+<p style="text-align:center;">
+    <a href="home.html">Home</a> |
+    <a href="courses.html">Courses</a> |
+</p>
+
+<hr>
+
+<h2 id="home">Home</h2>
+<p>Welcome to Department of Technology</p>
+
+<h2 id="courses">Courses</h2>
+<ul>
+    <li>B.Tech</li>
+    <li>M.Tech</li>
+    <li>BSc</li>
+</ul>
+
+</body>
+</html>
