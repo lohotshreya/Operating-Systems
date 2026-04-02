@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp; 
+    
+    printf("Enter the number of processes: ");
+    scanf("%d", &n);
+
+    int pid[n], arrival_time[n], burst_time[n];
+
+    for(i = 0; i < n; i++) {
+        pid[i] = i + 1;
+        printf("Enter arrival time for process %d: ", i + 1);
+        scanf("%d", &arrival_time[i]);
+        printf("Enter burst time for process %d: ", i + 1);
+        scanf("%d" , &burst_time[i]);
+    } 
+
+    for(i = 0; i < n - 1; i++) {
+        for(j = 0; j < n - i - 1; j++) {
+            if(arrival_time[j] > arrival_time[j+1]) {
+                // Swap Arrival Time
+                temp = arrival_time[j];
+                arrival_time[j] = arrival_time[j+1];
+                arrival_time[j+1] = temp;
+
+                // Swap Burst Time
+                temp = burst_time[j];
+                burst_time[j] = burst_time[j+1];
+                burst_time[j+1] = temp;
+
+                // Swap PID
+                temp = pid[j];
+                pid[j] = pid[j+1];
+                pid[j+1] = temp;
+            }
+        }
+    }
+
+   
+    int completion_time[n], turnaround_time[n], waiting_time[n];
+    int current_time = 0;
+    for(i = 0; i < n; i++) {
+        if(current_time < arrival_time[i]) {
+            printf("CPU is idle until process %d arrives at time %d.\n", pid[i], arrival_time[i]);
+            current_time = arrival_time[i];
+        }
+        completion_time[i] = current_time + burst_time[i];
+        turnaround_time[i] = completion_time[i] - arrival_time[i];
+        waiting_time[i] = turnaround_time[i] - burst_time[i];
+        current_time = completion_time[i];
+
+        printf("\nProcess %d:\n", pid[i]);
+        printf("Completion Time = %d\n", completion_time[i]);
+        printf("Turnaround Time = %d\n", turnaround_time[i]);
+        printf("Waiting Time    = %d\n", waiting_time[i]);
+    }
+
+    return 0;
+}
