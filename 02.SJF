@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp, current_time = 0, completed = 0;
+    printf("Enter the number of processes: ");
+    scanf("%d", &n);
+
+    int pid[n], arrival_time[n], burst_time[n], is_completed[n];
+    int completion_time[n], turnaround_time[n], waiting_time[n];
+
+    for(i = 0; i < n; i++) {
+        pid[i] = i + 1;
+        printf("Enter arrival time for process %d: ", i + 1);
+        scanf("%d", &arrival_time[i]);
+        printf("Enter burst time for process %d: ", i + 1);
+        scanf("%d", &burst_time[i]);
+        is_completed[i] = 0; 
+    }
+
+    while(completed < n) {
+        int idx = -1;
+        int min_burst = 1e9; 
+
+        // Find process with minimum burst time 
+        for(i = 0; i < n; i++) {
+            if(arrival_time[i] <= current_time && is_completed[i] == 0) {
+                if(burst_time[i] < min_burst) {
+                    min_burst = burst_time[i];
+                    idx = i;
+                }
+                // Tie-breaker
+                if(burst_time[i] == min_burst) {
+                    if(arrival_time[i] < arrival_time[idx]) {
+                        idx = i;
+                    }
+                }
+            }
+        }
+
+        if(idx != -1) {
+            completion_time[idx] = current_time + burst_time[idx];
+            turnaround_time[idx] = completion_time[idx] - arrival_time[idx];
+            waiting_time[idx] = turnaround_time[idx] - burst_time[idx];
+            
+            is_completed[idx] = 1;
+            completed++;
+            current_time = completion_time[idx];
+
+            printf("\nProcess %d (Completed at %d):", pid[idx], completion_time[idx]);
+            printf("\nTurnaround Time = %d, Waiting Time = %d\n", turnaround_time[idx], waiting_time[idx]);
+        } else {
+            // No process has arrived yet
+            current_time++;
+        }
+    }
+    return 0;
+}
