@@ -4,7 +4,7 @@ This repository contains implementations of various CPU Scheduling Algorithms, w
 
 Currently, the repo features two primary non-preemptive scheduling strategies, with more algorithms (Preemptive SJF, Round Robin, Priority, etc.) planned for future updates.
 
-##📋 Implemented Algorithms
+## 📋 Implemented Algorithms
 1. First-Come, First-Served (FCFS)
 FCFS is the simplest scheduling algorithm. It executes processes in the exact order they arrive in the ready queue.
 
@@ -23,7 +23,7 @@ Characteristic: Provides the minimum average waiting time for a given set of pro
 
 Logic: When the CPU is free, it is assigned to the process that has the smallest next CPU burst.
 
-##🛠️ Technical Details
+## 🛠️ Technical Details
 Language: C / C++
 
 Key Metrics Calculated:
@@ -38,7 +38,7 @@ Turnaround Time (TAT): Total Time Spent=CT−AT
 
 Waiting Time (WT): TAT−BT
 
-##🚀 Upcoming Additions
+## 🚀 Upcoming Additions
 [ ] Shortest Remaining Time First (SRTF) - Preemptive SJF
 
 [ ] Round Robin (RR) Scheduling
@@ -47,7 +47,7 @@ Waiting Time (WT): TAT−BT
 
 [ ] Multi-level Queue Scheduling
 
-##📂 How to Run
+## 📂 How to Run
 Clone the repository:
 git clone https://github.com/lohotshreya/Operating-Systems.git
 
