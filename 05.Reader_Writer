@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+// Global variables
+int rc = 0;      // reader count
+int mutex = 1;   // semaphore for rc
+int db = 1;      // semaphore for database
+
+// DOWN operation
+void down_mutex() {
+    while(mutex == 0);   // wait
+    mutex = 0;
+}
+
+void up_mutex() {
+    mutex = 1;
+}
+
+void down_db() {
+    while(db == 0);      // wait
+    db = 0;
+}
+
+void up_db() {
+    db = 1;
+}
+
+// Reader function
+void Reader(int id) {
+
+    down_mutex();
+    rc = rc + 1;
+
+    if(rc == 1)
+        down_db();   // first reader locks DB
+
+    up_mutex();
+
+    // Critical Section
+    printf("Reader %d is reading\n", id);
+
+    down_mutex();
+    rc = rc - 1;
+
+    if(rc == 0)
+        up_db();     // last reader unlocks DB
+
+    up_mutex();
+}
+
+// Writer function
+void Writer(int id) {
+
+    down_db();
+
+    // Critical Section
+    printf("Writer %d is writing\n", id);
+
+    up_db();
+}
+
+// Main function
+int main() {
+
+    Reader(1);
+    Reader(2);
+    Writer(1);
+    Reader(3);
+    Writer(2);
+    Reader(4);
+
+    return 0;
+}
