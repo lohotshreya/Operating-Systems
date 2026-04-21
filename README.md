@@ -39,13 +39,9 @@ Turnaround Time (TAT): Total Time Spent=CT−AT
 Waiting Time (WT): TAT−BT
 
 ## 🚀 Upcoming Additions
-[ ] Shortest Remaining Time First (SRTF) - Preemptive SJF
 
-[ ] Round Robin (RR) Scheduling
-
-[ ] Priority-Based Scheduling (Preemptive & Non-preemptive)
-
-[ ] Multi-level Queue Scheduling
+[] Banker's Algorithm
+[] FIFO for Memory Management
 
 ## 📂 How to Run
 Clone the repository:
