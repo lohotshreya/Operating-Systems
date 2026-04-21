@@ -41,6 +41,7 @@ Waiting Time (WT): TAT−BT
 ## 🚀 Upcoming Additions
 
 [] Banker's Algorithm
+
 [] FIFO for Memory Management
 
 ## 📂 How to Run
